@@ -2,14 +2,16 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var cleanCss = require('gulp-clean-css');
 var rename = require('gulp-rename');
+var typescript = require('gulp-tsc');
 
 var paths = {
-  sass: ['./scss/**/*.scss']
+  sass: ['./scss/**/*.scss'],
+  src: ['./src/**/*.ts']
 };
 
 gulp.task('default', ['sass']);
 
-gulp.task('sass', function(done) {
+gulp.task('sass', function (done) {
   gulp.src('./scss/ionic.app.scss')
     .pipe(sass())
     .on('error', sass.logError)
@@ -22,6 +24,13 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
-gulp.task('watch', ['sass'], function() {
+gulp.task('compile', function () {
+  gulp.src(paths.src)
+    .pipe(typescript())
+    .pipe(gulp.dest('./www/js/'))
+});
+
+gulp.task('watch', ['sass','compile'], function () {
   gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.src, ['compile']);
 });
