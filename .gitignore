@@ -4,3 +4,6 @@
 node_modules/
 platforms/
 plugins/
+# bower client side lib
+www/lib
+

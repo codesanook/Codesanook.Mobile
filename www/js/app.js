@@ -1,5 +1,4 @@
 /// <reference path="../node_modules/@types/cordova-plugin-keyboard/index.d.ts"/>
-/// <reference path="../node_modules/@types/cordova-plugin-inappbrowser/index.d.ts"/>
 /// <reference path="../node_modules/@types/cordova/index.d.ts"/>
 /// <reference path="../node_modules/@types/angular/index.d.ts"/> 
 var App;
@@ -8,7 +7,7 @@ var App;
     // angular.module is a global place for creating, registering and retrieving Angular modules
     // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
     // the 2nd parameter is an array of 'requires'
-    angular.module('myreddit', ['ionic', 'angularMoment'])
+    angular.module('starter', ['ionic'])
         .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
