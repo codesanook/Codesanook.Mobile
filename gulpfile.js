@@ -1,15 +1,20 @@
-var gulp = require('gulp');
+//https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html
+//https://www.typescriptlang.org/docs/handbook/gulp.html
+
+var gulp = require("gulp");
+var browserify = require("browserify");
+var source = require('vinyl-source-stream');
+var tsify = require("tsify");
+
 var sass = require('gulp-sass');
 var cleanCss = require('gulp-clean-css');
 var rename = require('gulp-rename');
-var typescript = require('gulp-tsc');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
   src: ['./src/**/*.ts']
 };
 
-gulp.task('default', ['sass']);
 
 gulp.task('sass', function (done) {
   gulp.src('./scss/ionic.app.scss')
@@ -24,13 +29,21 @@ gulp.task('sass', function (done) {
     .on('end', done);
 });
 
-gulp.task('compile', function () {
-  gulp.src(paths.src)
-    .pipe(typescript())
-    .pipe(gulp.dest('./www/js/'))
+gulp.task("compile", [], function () {
+    return browserify({
+        basedir: '.',
+        debug: true,
+        entries: ['./src/app.ts'],
+        cache: {},
+        packageCache: {}
+    })
+        .plugin(tsify)
+        .bundle()
+        .pipe(source('bundle.js'))
+        .pipe(gulp.dest("./www/js/"));
 });
 
-gulp.task('watch', ['sass','compile'], function () {
+gulp.task('watch', ['sass', 'compile'], function () {
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.src, ['compile']);
 });
