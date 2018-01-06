@@ -1,6 +1,5 @@
 //https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html
 //https://www.typescriptlang.org/docs/handbook/gulp.html
-
 var gulp = require("gulp");
 var browserify = require("browserify");
 var source = require('vinyl-source-stream');
@@ -14,7 +13,6 @@ var paths = {
   sass: ['./scss/**/*.scss'],
   src: ['./src/**/*.ts']
 };
-
 
 gulp.task('sass', function (done) {
   gulp.src('./scss/ionic.app.scss')
