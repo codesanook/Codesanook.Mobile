@@ -1,8 +1,4 @@
 {
-    // "files": [
-    //     "src/main.ts",
-    //     "src/greet.ts"
-    // ],
     "compilerOptions": {
         "noImplicitAny": false,
         "module": "commonjs",
