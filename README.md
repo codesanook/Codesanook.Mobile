@@ -1,10 +1,11 @@
 # How to run a template
 
-npm install
+CD to root of the project
 npm install -g cordova ionic gulp-cli
+npm install
 
-## compile TypeScript and Watch
+## compile TypeScript, Sass and watch for new changes
 gulp watch
 
-## run ionic app in bowser
+## run ionic app in browser
 ionic serve
