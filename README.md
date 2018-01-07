@@ -15,3 +15,8 @@
 
 ## run ionic app in browser
 * ionic serve
+
+
+# screen shot
+
+![screen short](https://raw.githubusercontent.com/aaronamm/ionic1-typescript-project-template/master/screen-shot.PNG)
