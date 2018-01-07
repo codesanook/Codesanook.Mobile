@@ -1,11 +1,12 @@
 import * as angular from 'angular';
-import "angular-animate"
-import "angular-sanitize"
-import "angular-ui-router"
+import "angular-animate";
+import "angular-sanitize";
+import "angular-ui-router";
 import './ionic.module.js';
 import './ionic-angular.module.js';
-import IndexController from "./controllers/IndexController"
 
+import IndexController from "./controllers/IndexController";
+import DatetimeService from "./services/DatetimeService";
 
 let module = angular.module('starter',
   [
@@ -39,4 +40,5 @@ let module = angular.module('starter',
     });
   });
 
-module.controller("indexController", IndexController)
+module.controller("indexController", IndexController);
+module.service("datetimeService", DatetimeService);
