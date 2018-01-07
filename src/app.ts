@@ -4,9 +4,11 @@ import "angular-sanitize";
 import "angular-ui-router";
 import './ionic.module.js';
 import './ionic-angular.module.js';
+import 'jquery';
 
 import IndexController from "./controllers/IndexController";
 import DatetimeService from "./services/DatetimeService";
+
 
 let module = angular.module('starter',
   [

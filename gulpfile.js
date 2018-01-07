@@ -1,13 +1,17 @@
 //https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html
 //https://www.typescriptlang.org/docs/handbook/gulp.html
-var gulp = require("gulp");
-var browserify = require("browserify");
-var source = require('vinyl-source-stream');
-var tsify = require("tsify");
+const gulp = require("gulp");
+const browserify = require("browserify");
+const source = require('vinyl-source-stream');
+const tsify = require("tsify");
 
-var sass = require('gulp-sass');
-var cleanCss = require('gulp-clean-css');
-var rename = require('gulp-rename');
+const sass = require('gulp-sass');
+const cleanCss = require('gulp-clean-css');
+const rename = require('gulp-rename');
+
+const webpack = require('webpack');
+const webpackStream = require('webpack-stream');
+const webpackConfig = require('./webpack.config.js');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
@@ -28,17 +32,25 @@ gulp.task('sass', function (done) {
 });
 
 gulp.task("compile", [], function () {
-    return browserify({
-        basedir: '.',
-        debug: true,
-        entries: ['./src/app.ts'],
-        cache: {},
-        packageCache: {}
-    })
-        .plugin(tsify)
-        .bundle()
-        .pipe(source('bundle.js'))
-        .pipe(gulp.dest("./www/js/"));
+  var b = browserify({
+    basedir: '.',
+    debug: true,
+    entries: ['./src/app.ts'],
+    cache: {},
+    packageCache: {}
+  });
+  b.ignore("jquery");//and include it directly
+  b.plugin(tsify)
+    .bundle()
+    .pipe(source('bundle.js'))
+    .pipe(gulp.dest("./www/js/"));
+});
+
+//support build with webpack, just experiment
+gulp.task('webpack', () => {
+  gulp.src('./src/app.ts')
+    .pipe(webpackStream(webpackConfig), webpack)
+    .pipe(gulp.dest('./www/js/'));
 });
 
 gulp.task('watch', ['sass', 'compile'], function () {
