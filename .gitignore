@@ -6,4 +6,6 @@ platforms/
 plugins/
 # bower client side lib
 www/lib
+www/js/*
+www/css/*
 
