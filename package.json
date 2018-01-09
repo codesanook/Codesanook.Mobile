@@ -18,7 +18,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-typescript": "^3.2.3",
     "tsify": "^3.0.4",
-    "typescript": "^2.6.2",
+    "typescript": "^2.4.2",
     "vinyl-source-stream": "^2.0.0",
     "webpack": "^3.10.0",
     "webpack-stream": "^4.0.0"
