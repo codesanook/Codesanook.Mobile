@@ -34,7 +34,7 @@ gulp.task('sass', function (done) {
 gulp.task("compile", [], function () {
   var b = browserify({
     basedir: '.',
-    debug: true,
+    debug: false,//turn on/off source map
     entries: ['./src/app.ts'],
     cache: {},
     packageCache: {}
