@@ -12,6 +12,8 @@ const rename = require('gulp-rename');
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
 const webpackConfig = require('./webpack.config.js');
+const runSequence = require("run-sequence");
+const bower = require("bower");
 
 var paths = {
   sass: ['./scss/**/*.scss'],
@@ -26,7 +28,9 @@ gulp.task('sass', function (done) {
     .pipe(cleanCss({
       keepSpecialComments: 0
     }))
-    .pipe(rename({ extname: '.min.css' }))
+    .pipe(rename({
+      extname: '.min.css'
+    }))
     .pipe(gulp.dest('./www/css/'))
     .on('end', done);
 });
@@ -34,26 +38,33 @@ gulp.task('sass', function (done) {
 gulp.task("compile", [], function () {
   var b = browserify({
     basedir: '.',
-    debug: false,//turn on/off source map
+    debug: false, //turn on/off source map
     entries: ['./src/app.ts'],
     cache: {},
     packageCache: {}
   });
-  b.ignore("jquery");//and include it directly
+  b.ignore("jquery"); //and include it directly
   b.plugin(tsify)
     .bundle()
     .pipe(source('bundle.js'))
     .pipe(gulp.dest("./www/js/"));
 });
 
-//support build with webpack, just experiment
-gulp.task('webpack', () => {
-  gulp.src('./src/app.ts')
-    .pipe(webpackStream(webpackConfig), webpack)
-    .pipe(gulp.dest('./www/js/'));
-});
-
 gulp.task('watch', ['sass', 'compile'], function () {
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.src, ['compile']);
+});
+
+gulp.task("bower", callback => {
+  bower.commands.install([]);
+  setTimeout(() => {
+    callback();
+  }, 15000);
+});
+
+gulp.task("build", () => {
+  console.log("buiding with gulp");
+  runSequence(
+    "bower", ["sass", "compile"]
+  );
 });
