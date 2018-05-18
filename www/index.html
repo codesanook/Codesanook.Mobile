@@ -17,19 +17,29 @@
 </head>
 
 <body ng-app="starter">
-  <ion-pane ng-controller="indexController">
+  <ion-pane ng-controller="indexController as indexCtrl">
     <ion-header-bar class="bar-stable">
       <h1 class="title">Ionic Blank Starter</h1>
     </ion-header-bar>
     <ion-content class="padding">
 
       <div>
-        <div class="item item-divider">
-         Hello world 
-        </div>
-        <div id="message" class="item">
-          {{ message }}
-        </div>
+          <div class="item item-divider">
+          Hello world 
+          </div>
+
+          <div class="item">
+            {{ indexCtrl.dateOfBirth.toString() }}
+          </div>
+
+          <div class="item">
+            offset value {{ indexCtrl.offsetValue }}
+          </div>
+
+          <div id="message" class="item"></div>
+          <div ng-repeat="zoneName in indexCtrl.allTimezoneNames" class="item">
+            {{ zoneName }}
+          </div>
     </ion-content>
   </ion-pane>
 </body>
