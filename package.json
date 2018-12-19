@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "An Ionic project",
   "devDependencies": {
+    "@ionic/v1-toolkit": "^1.0.14",
     "@types/angular": "^1.6.32",
     "@types/cordova": "0.0.34",
     "@types/cordova-ionic": "0.0.29",
