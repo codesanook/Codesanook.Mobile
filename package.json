@@ -24,6 +24,7 @@
     "npm": "^5.6.0",
     "run-sequence": "^2.2.1",
     "tsify": "^3.0.4",
+    "tslib": "^1.9.3",
     "typescript": "^2.4.2",
     "vinyl-source-stream": "^2.0.0",
     "webpack": "^3.10.0",

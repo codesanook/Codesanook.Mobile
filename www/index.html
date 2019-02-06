@@ -24,22 +24,26 @@
     <ion-content class="padding">
 
       <div>
-          <div class="item item-divider">
-          Hello world 
-          </div>
+        <div class="item item-divider">
+          Hello world
+        </div>
 
-          <div class="item">
-            {{ indexCtrl.dateOfBirth.toString() }}
-          </div>
+        <div>
+          <button ng-click="indexCtrl.alert()"> Click Me</button>
+        </div>
 
-          <div class="item">
-            offset value {{ indexCtrl.offsetValue }}
-          </div>
+        <div class="item">
+          {{ indexCtrl.dateOfBirth.toString() }}
+        </div>
 
-          <div id="message" class="item"></div>
-          <div ng-repeat="zoneName in indexCtrl.allTimezoneNames" class="item">
-            {{ zoneName }}
-          </div>
+        <div class="item">
+          offset value {{ indexCtrl.offsetValue }}
+        </div>
+
+        <div id="message" class="item"></div>
+        <div ng-repeat="zoneName in indexCtrl.allTimezoneNames" class="item">
+          {{ zoneName }}
+        </div>
     </ion-content>
   </ion-pane>
 </body>

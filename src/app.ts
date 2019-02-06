@@ -6,8 +6,9 @@ import "./ionic.module.js";
 import "./ionic-angular.module.js";
 import "jquery";
 
-import DatetimeService from "./services/DatetimeService";
+import DateTimeService from "./services/DateTimeService";
 import IndexController from "./controllers/IndexController";
+import 'tslib'
 
 let module = angular.module('starter',
   [
@@ -17,8 +18,10 @@ let module = angular.module('starter',
     'ionic'
   ])
 
-  .run(function ($ionicPlatform) {
-    $ionicPlatform.ready(function () {
+  .run(($ionicPlatform, $q) => {
+
+    window['Promise'] = $q;
+    $ionicPlatform.ready(() => {
 
       if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -42,4 +45,4 @@ let module = angular.module('starter',
   });
 
 module.controller("indexController", IndexController);
-module.service("datetimeService", DatetimeService);
+module.service("dateTimeService", DateTimeService);
