@@ -9,40 +9,45 @@ import "jquery";
 import DateTimeService from "./services/DateTimeService";
 import IndexController from "./controllers/IndexController";
 import 'tslib'
+import ServiceInterceptor from "./services/ServiceInterceptor";
 
-let module = angular.module('starter',
+let app = angular.module('starter',
   [
     'ngAnimate',
     'ngSanitize',
     'ui.router',
     'ionic'
-  ])
+  ]);
 
-  .run(($ionicPlatform, $q) => {
+app.config(($httpProvider) => {
+  $httpProvider.interceptors.push(ServiceInterceptor.factory);
+});
 
-    window['Promise'] = $q;
-    $ionicPlatform.ready(() => {
+app.run(($ionicPlatform, $q) => {
 
-      if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-        // for form inputs)
-        window.cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-        // Don't remove this line unless you know what you are doing. It stops the viewport
-        // from snapping when text inputs are focused. Ionic handles this internally for
-        // a much nicer keyboard experience.
-        window.cordova.plugins.Keyboard.disableScroll(true);
-      }
+  window['Promise'] = $q;
+  $ionicPlatform.ready(() => {
 
-      if (window.cordova && window.cordova.InAppBrowser) {
-        window.open = window.cordova.InAppBrowser.open;
-      }
+    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      window.cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      // Don't remove this line unless you know what you are doing. It stops the viewport
+      // from snapping when text inputs are focused. Ionic handles this internally for
+      // a much nicer keyboard experience.
+      window.cordova.plugins.Keyboard.disableScroll(true);
+    }
 
-      if (window.StatusBar) {
-        // org.apache.cordova.statusbar required
-        window.StatusBar.styleDefault();
-      }
-    });
+    if (window.cordova && window.cordova.InAppBrowser) {
+      window.open = window.cordova.InAppBrowser.open;
+    }
+
+    if (window.StatusBar) {
+      // org.apache.cordova.statusbar required
+      window.StatusBar.styleDefault();
+    }
   });
+});
 
-module.controller("indexController", IndexController);
-module.service("dateTimeService", DateTimeService);
+app.controller("indexController", IndexController);
+app.service("dateTimeService", DateTimeService);
