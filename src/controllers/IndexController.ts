@@ -11,7 +11,8 @@ export default class IndexController {
     private $scope: any,
     private $document: ng.IDocumentService,
     private dateTimeService: DateTimeService,
-    private $http: ng.IHttpService
+    private $http: ng.IHttpService,
+    private $ionicPopup: ionic.popup.IonicPopupService
   ) {
     let utcNow = dateTimeService.getUtcNow();
     $scope.message = `Hello my new world at ${utcNow.toISOString()}`;
@@ -24,12 +25,15 @@ export default class IndexController {
   public async alert(): Promise<void> {
     const result = await this.$http.get('https://server.test-cors.org/server?id=3149187&enable=true&status=200&credentials=false');
     console.log(result.data);
-    await this.sleep(1000);
+    await this.showModal();
     console.log('done');
-    alert('ok');
   }
 
-  sleep(ms: number) {
+  async showModal(): Promise<void> {
+    return this.$ionicPopup.alert({ title: 'ok', template: 'It is okay' });
+  }
+
+   sleep(ms: number):Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 }
