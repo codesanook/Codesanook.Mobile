@@ -1,0 +1,35 @@
+<ion-view>
+    <ion-nav-title class="text-center">
+        <h1 class="title">News Feed</h1>
+    </ion-nav-title>
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+        <button class="button button-icon ion ion-android-add" ng-click="injuryCtrl.create()"></button>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <!-- https://codepen.io/mhartington/pen/PwJjBz?editors=011 -->
+        <!-- https://jsfiddle.net/sreekanthjayan/0d9vj86k/ -->
+        <!-- https://codepen.io/pankajbadukale/pen/LNgRzJ -->
+        <div class="item text-center">
+            <button id="btn-submit" type="button" class="button button-positive" ng-click="newsFeedCtrl.alert()">
+                alert
+            </button>
+        </div>
+        <div class="item">
+            {{ newsFeedCtrl.dateOfBirth.toString() }}
+        </div>
+        <div class="item">
+            offset value {{ newsFeedCtrl.offsetValue }}
+        </div>
+
+        <div id="message" class="item"></div>
+        <div ng-repeat="zoneName in newsFeedCtrl.allTimezoneNames" class="item">
+            {{ zoneName }}
+        </div>
+    </ion-content>
+</ion-view>

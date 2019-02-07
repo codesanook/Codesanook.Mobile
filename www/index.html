@@ -2,50 +2,28 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-  <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
 
-  <link rel="manifest" href="manifest.json">
-  <link href="css/ionic.app.css" rel="stylesheet">
-  <!-- cordova script (this will be a 404 during development) -->
-  <script src="cordova.js"></script>
-  <script src="lib/jquery/dist/jquery.js"></script>
+    <link rel="manifest" href="manifest.json">
+    <link href="css/ionic.app.css" rel="stylesheet">
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+    <script src="lib/jquery/dist/jquery.js"></script>
 
-  <!-- our app's js -->
-  <script src="js/bundle.js"></script>
+    <!-- our app's js -->
+    <script src="js/bundle.js"></script>
 </head>
 
-<body ng-app="starter">
-  <ion-pane ng-controller="indexController as indexCtrl">
-    <ion-header-bar class="bar-stable">
-      <h1 class="title">Ionic Blank Starter</h1>
-    </ion-header-bar>
-    <ion-content class="padding">
+<body ng-app="codeSanook">
+    <!-- The nav bar that will be updated as we navigate -->
+    <ion-nav-bar class="bar-positive">
+    </ion-nav-bar>
 
-      <div>
-        <div class="item item-divider">
-          Hello world
-        </div>
-
-        <div>
-          <button ng-click="indexCtrl.alert()"> Click Me</button>
-        </div>
-
-        <div class="item">
-          {{ indexCtrl.dateOfBirth.toString() }}
-        </div>
-
-        <div class="item">
-          offset value {{ indexCtrl.offsetValue }}
-        </div>
-
-        <div id="message" class="item"></div>
-        <div ng-repeat="zoneName in indexCtrl.allTimezoneNames" class="item">
-          {{ zoneName }}
-        </div>
-    </ion-content>
-  </ion-pane>
+    <!-- where the initial view template will be rendered -->
+    <ion-nav-view>
+    </ion-nav-view>
 </body>
 
 </html>

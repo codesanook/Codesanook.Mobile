@@ -1,0 +1,33 @@
+<ion-side-menus>
+    <!-- Left menu -->
+    <ion-side-menu side="left">
+        <header class="bar bar-header bar-positive">
+            <h1 class="title">CodeSanook</h1>
+        </header>
+        <!--to not hide content under head bar-->
+        <ion-content class="has-header">
+            <ion-list>
+                <ion-item nav-clear menu-close href="#/app/tab/news-feed">
+                    <i class="icon ion-android-home"></i> News Feed
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/tab/community">
+                    <i class="icon ion-person"></i> Community
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+
+    <ion-side-menu-content>
+        <!-- Main content, usually <ion-nav-view> -->
+        <!--define back button for child pages-->
+        <ion-nav-bar class="bar-positive">
+            <ion-nav-back-button class="button-clear">
+                <i class="icon ion-chevron-left"></i> Back
+            </ion-nav-back-button>
+        </ion-nav-bar>
+
+        <!--content will get inject here -->
+        <ion-nav-view name="mainContentView"> </ion-nav-view>
+
+    </ion-side-menu-content>
+</ion-side-menus>
