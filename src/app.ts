@@ -13,13 +13,19 @@ import registerRouters from './UiRouterRegistration';
 import AppController from './controllers/AppController';
 import NewsFeedController from './controllers/NewsFeedController';
 import CommunityController from './controllers/CommunityController';
+import SettingController from './controllers/SettingController';
+
+import "angular-translate"
+const enLocale = require('./locale/en.json');
+const thLocale = require('./locale/th.json');
 
 let app = angular.module('codeSanook',
     [
         'ngAnimate',
         'ngSanitize',
         'ui.router',
-        'ionic'
+        'ionic',
+        'pascalprecht.translate'
     ]);
 
 app.config((
@@ -27,10 +33,16 @@ app.config((
     $stateProvider: ng.ui.IStateProvider,
     $urlRouterProvider: ng.ui.IUrlRouterProvider,
     $ionicConfigProvider: ionic.utility.IonicConfigProvider,
+    $translateProvider: ng.translate.ITranslateProvider
 ) => {
     $httpProvider.interceptors.push(ServiceInterceptor.factory);
     registerRouters($stateProvider, $urlRouterProvider);
     $ionicConfigProvider.tabs.position('bottom'); // other values: top
+
+    $translateProvider.translations('en', enLocale);
+    $translateProvider.translations('th', thLocale);
+    $translateProvider.preferredLanguage('th');
+
 });
 
 app.run(($ionicPlatform, $q) => {
@@ -61,5 +73,5 @@ app.run(($ionicPlatform, $q) => {
 app.controller("appController", AppController);
 app.controller("newsFeedController", NewsFeedController);
 app.controller("communityController", CommunityController);
-
+app.controller("settingController", SettingController);
 app.service("dateTimeService", DateTimeService);
