@@ -10,19 +10,17 @@
     <link href="css/ionic.app.css" rel="stylesheet">
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
-    <script src="lib/jquery/dist/jquery.js"></script>
-
     <!-- our app's js -->
     <script src="js/bundle.js"></script>
 </head>
 
 <body ng-app="codeSanook">
     <!-- The nav bar that will be updated as we navigate -->
-    <ion-nav-bar class="bar-positive">
-    </ion-nav-bar>
+    <ion-nav-bar class="bar-positive"> </ion-nav-bar>
 
     <!-- where the initial view template will be rendered -->
     <ion-nav-view>
+        <div class="offline-status"> {{ 'NO_INTERNET' | translate }} </div>
     </ion-nav-view>
 </body>
 

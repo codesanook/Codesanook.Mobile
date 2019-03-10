@@ -5,6 +5,7 @@ import 'angular-ui-router';
 import './ionic.module.js';
 import './ionic-angular.module.js';
 import 'jquery';
+import "ng-cordova"
 
 import DateTimeService from './services/DateTimeService';
 import 'tslib'
@@ -19,13 +20,14 @@ import "angular-translate"
 const enLocale = require('./locale/en.json');
 const thLocale = require('./locale/th.json');
 
-let app = angular.module('codeSanook',
+const app = angular.module('codeSanook',
     [
         'ngAnimate',
         'ngSanitize',
         'ui.router',
         'ionic',
-        'pascalprecht.translate'
+        'pascalprecht.translate',
+        'ngCordova',
     ]);
 
 app.config((
@@ -45,7 +47,12 @@ app.config((
 
 });
 
-app.run(($ionicPlatform, $q) => {
+app.run((
+    $ionicPlatform: ionic.platform.IonicPlatformService,
+    $q: ng.IQService,
+    $rootScope: ng.IRootScopeService,
+    $document: ng.IDocumentService) => {
+
     window['Promise'] = $q;
     $ionicPlatform.ready(() => {
 
@@ -67,6 +74,19 @@ app.run(($ionicPlatform, $q) => {
             // org.apache.cordova.statusbar required
             window.StatusBar.styleDefault();
         }
+
+        if (window.cordova) {
+            // listen for Online event
+            $rootScope.$on('$cordovaNetwork:online', (event, networkState) => {
+                $document.find('.offline-status').css('display', 'none');
+            });
+
+            // listen for Offline event
+            $rootScope.$on('$cordovaNetwork:offline', (event, networkState) => {
+                $document.find('.offline-status').css('display', 'flex');
+            });
+        }
+
     });
 });
 

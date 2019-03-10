@@ -20,3 +20,17 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+
+.offline-status {
+    font-weight: 400;
+    color: #721c24;
+    background-color: #f8d7da;
+    position: absolute;
+    z-index: 99;
+    padding: 5px 10px;
+    height: 44px;
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}

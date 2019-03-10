@@ -84,4 +84,5 @@
     <hook src="npm-install.js" type="before_build" />
     <hook src="gulp-build.js" type="before_prepare" />
     <engine name="android" spec="6.4.0" />
+    <plugin name="cordova-plugin-network-information" spec="2.0.1" />
 </widget>

@@ -16,6 +16,7 @@
     "@types/jquery": "^3.2.17",
     "@types/lodash": "^4.14.120",
     "@types/moment-timezone": "^0.5.4",
+    "@types/ng-cordova": "0.0.14",
     "@types/node": "^8.5.5",
     "angular": "1.5.3",
     "angular-animate": "1.5.3",
@@ -41,6 +42,7 @@
     "moment": "^2.20.1",
     "moment-timezone": "^0.5.17",
     "natives": "^1.1.6",
+    "ng-cordova": "^0.1.27-alpha",
     "node-sass": "^4.8.3",
     "npm": "^5.10.0",
     "run-sequence": "^2.2.1",
@@ -52,7 +54,8 @@
     "webpack-stream": "^4.0.0"
   },
   "dependencies": {
-    "ci": "^1.0.0"
+    "ci": "^1.0.0",
+    "cordova-plugin-network-information": "2.0.1"
   },
   "cordova": {
     "plugins": {
@@ -60,7 +63,8 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-network-information": {}
     },
     "platforms": [
       "android"

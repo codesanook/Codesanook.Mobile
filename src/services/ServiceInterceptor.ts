@@ -14,6 +14,16 @@ export default class ServiceInterceptor {
 
     // need to create an instance method using arrow function
     public request = async (requestConfig: ng.IRequestConfig): Promise<ng.IRequestConfig> => {
+
+        try {
+            const network = this.$injector.get<ngCordova.INetworkInformationService>("$cordovaNetwork");
+            if (network != null) {
+                if (network.isOffline()) {
+                    return this.$q.reject({ isOffline: true });
+                }
+            }
+        } catch { }
+
         this.setHeader(requestConfig);
         return Promise.resolve(requestConfig);
     };
@@ -33,4 +43,9 @@ export default class ServiceInterceptor {
     private setHeader(config: ng.IRequestConfig): void {
         config.headers.Accept = 'application/json';
     }
+
+    private isOfflineReject(rejection: any) {
+        return rejection != null && rejection.isOffline;
+    }
+
 }
