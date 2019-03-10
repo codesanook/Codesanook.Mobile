@@ -51,7 +51,9 @@
     "webpack": "^3.10.0",
     "webpack-stream": "^4.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "ci": "^1.0.0"
+  },
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
