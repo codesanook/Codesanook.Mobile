@@ -11,7 +11,9 @@ export default class NewsFeedController {
         private $document: ng.IDocumentService,
         private dateTimeService: DateTimeService,
         private $http: ng.IHttpService,
-        private $ionicPopup: ionic.popup.IonicPopupService
+        private $ionicPopup: ionic.popup.IonicPopupService,
+        private $cordovaNetwork: ngCordova.INetworkInformationService,
+        private $rootScope: ng.IRootScopeService
     ) {
         let utcNow = dateTimeService.getUtcNow();
         $scope.message = `Hello my new world at ${utcNow.toISOString()}`;
@@ -19,6 +21,7 @@ export default class NewsFeedController {
         this.allTimezoneNames = this.dateTimeService.getAllTimezoneNames();
         this.dateOfBirth = this.dateTimeService.getDateOfBirth();
         this.offsetValue = this.dateTimeService.getTimezoneOffset();
+
     }
 
     public async alert(): Promise<void> {
@@ -34,5 +37,17 @@ export default class NewsFeedController {
 
     private sleep(ms: number): Promise<void> {
         return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    public async getNetworkStatus(): Promise<void> {
+        await this.$ionicPopup.alert({
+            title: 'Network status',
+            template: `Current network status ${this.$cordovaNetwork.isOnline()}`
+        });
+        if (this.$cordovaNetwork.isOnline()) {
+            this.$document.find('.offline-status').css('display', 'none');
+        } else {
+            this.$document.find('.offline-status').css('display', 'flex');
+        }
     }
 }
