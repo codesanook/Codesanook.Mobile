@@ -4,18 +4,20 @@ import 'angular-sanitize';
 import 'angular-ui-router';
 import './ionic.module.js';
 import './ionic-angular.module.js';
-import "ng-cordova"
+import 'ng-cordova'
+import 'tslib'
+import "angular-translate"
 
 import DateTimeService from './services/DateTimeService';
-import 'tslib'
 import ServiceInterceptor from './services/ServiceInterceptor';
 import registerRouters from './UiRouterRegistration';
 import AppController from './controllers/AppController';
 import NewsFeedController from './controllers/NewsFeedController';
 import CommunityController from './controllers/CommunityController';
 import SettingController from './controllers/SettingController';
+import TemperatureController from './controllers/TemperatureController';
 
-import "angular-translate"
+
 const enLocale = require('./locale/en.json');
 const thLocale = require('./locale/th.json');
 
@@ -91,8 +93,9 @@ app.run((
     });
 });
 
-app.controller("appController", AppController);
-app.controller("newsFeedController", NewsFeedController);
-app.controller("communityController", CommunityController);
-app.controller("settingController", SettingController);
-app.service("dateTimeService", DateTimeService);
+app.controller('appController', AppController);
+app.controller('newsFeedController', NewsFeedController);
+app.controller('communityController', CommunityController);
+app.controller('settingController', SettingController);
+app.controller('temperatureController', TemperatureController);
+app.service('dateTimeService', DateTimeService);

@@ -52,6 +52,16 @@ export default function registerRouters(
         }
     });
 
+    $stateProvider.state('app.temperature', {
+        url: "/temperature",
+        views: {
+            'mainContentView': { //name of ion nav view
+                templateUrl: 'templates/temperature.html',
+                controller: 'temperatureController as temperatureCtrl'
+            }
+        }
+    });
+
     //By default page, go to URL not a state name and must be start from a parent URL
     $urlRouterProvider.otherwise("/app/tab/news-feed");
 }

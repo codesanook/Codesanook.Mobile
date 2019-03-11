@@ -1,0 +1,25 @@
+<ion-view>
+    <ion-nav-title class="title">{{ 'TEMPERATURE' | translate }} </ion-nav-title>
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+        <button class="button button-icon ion ion-information"></button>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="item">
+            <button class="button button-default" ng-click="temperatureCtrl.updateCurrentLocation()">update</button>
+        </div>
+        <div class="item">
+            Update at:
+        </div>
+        <div class="item">
+            Lat : {{ temperatureCtrl.location.lat }}
+        </div>
+        <div class="item">
+            Lon : {{ temperatureCtrl.location.lon }}
+        </div>
+    </ion-content>
+</ion-view>
