@@ -25,12 +25,24 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     font-family: 'ds-digi';
     src: url('../css/fonts/ds-digi.eot');
     src: url('../css/fonts/ds-digi.eot?#iefix') format('embedded-opentype'),
-         url('../css/fonts/ds-digi.woff2') format('woff2'),
-         url('../css/fonts/ds-digi.woff') format('woff'),
-         url('../css/fonts/ds-digi.ttf') format('truetype'),
-         url('../css/fonts/ds-digi.svg#ds-digi') format('svg');
+        url('../css/fonts/ds-digi.woff2') format('woff2'),
+        url('../css/fonts/ds-digi.woff') format('woff'),
+        url('../css/fonts/ds-digi.ttf') format('truetype'),
+        url('../css/fonts/ds-digi.svg#ds-digi') format('svg');
     font-weight: normal;
     font-style: normal;
+}
+
+@font-face {
+    font-family: 'ds-digi';
+    src: url('../css/fonts/ds-digi-b.eot');
+    src: url('../css/fonts/ds-digi-b.eot?#iefix') format('embedded-opentype'),
+        url('../css/fonts/ds-digi-b.woff2') format('woff2'),
+        url('../css/fonts/ds-digi-b.woff') format('woff'),
+        url('../css/fonts/ds-digi-b.ttf') format('truetype'),
+        url('../css/fonts/ds-digi-b.svg#ds-digi-b') format('svg');
+    font-weight: bold;
+    font-style: bold;
 }
 
 .offline-status {
@@ -47,11 +59,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     align-items: center;
 }
 
-.big-sevenSeg {
-    padding:0.1em;
-    height: 180px;
-    width: 100%;
-}
+
 
 .center2D {
     position: absolute;
@@ -64,9 +72,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     text-align: center;
 }
 
+$bg-color: #000;
+$temperature-color: #f00;
+$information-color: #fff;
+
+
 .temperature {
     font-family: 'ds-digi';
-    background-color: #eee;
+    background-color: $bg-color;
 
     .main {
         position: relative;
@@ -79,7 +92,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
             left: 15px;
             right: 15px;
             padding: 20px;
-            border: solid 2px #000;
+            border: solid 4px $information-color;
             border-radius: 10px;
 
             .center2D {
@@ -88,54 +101,67 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
                 .thermometer {
                     line-height: 1;
                     text-align: center;
-                    border-bottom: solid 2px #000;
-        
+                    border-bottom: solid 2px $information-color;
+
                     .digits {
                         margin: 5px 0;
-                        font-size: 110px;
+                        font-size: 150px;
                         font-weight: bold;
-        
+                        color: $temperature-color;
+
                         .unit {
-                            font-size: 50px;
+                            font-size: 80px;
                         }
                     }
                 }
-        
+
                 .location {
                     margin: 20px auto;
-                    width: 150px;
-                    font-size: 24px;
+                    width: 220px;
+                    font-size: 40px;
+                    color: $information-color;
 
-                    > div {
-                        label {
+                    >div {
+                        margin-top: 10px;
+
+                        i {
                             display: inline-block;
-                            width: 40px;
-                            font-size: 20px;
+                            width: 70px;
+                            vertical-align: middle;
                         }
+
                         span {
                             display: inline-block;
-                            width: calc(100% - 46px);
+                            width: calc(100% - 80px);
                             text-align: right;
+                            vertical-align: middle;
                         }
                     }
                 }
-        
+
                 .btn-update {
                     margin-top: 40px;
                     text-align: center;
-        
+                    color: $information-color;
+
                     button {
                         font-family: 'ds-digi';
-                        margin-bottom: 10px;
+                        margin-bottom: 20px;
                         padding: 5px 15px;
-                        border: solid 1px #ddd;
+                        border: solid 2px $information-color;
                         border-radius: 4px;
+                        background-color: transparent;
                         font-style: italic;
-                        font-size: 30px;
+                        font-size: 40px;
+                        color: $information-color;
+                    }
+
+                    .last-update {
+                        font-size: 20px;
                     }
                 }
             }
         }
-        
+
     }
 }

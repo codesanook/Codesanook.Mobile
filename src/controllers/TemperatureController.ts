@@ -31,16 +31,7 @@ export default class TemperatureController {
             this.location.lat = position.coords.latitude;
             this.location.lon = position.coords.longitude;
             const weather = await this.weatherService.getCurrentWeather(this.location.lat, this.location.lon);
-            this.temperature = weather.main.temp;
-            const jqueryObject: any = this.$document.find("#temperature");
-
-            const temperatureValue = Math.round(this.temperature * 10) / 10 + 'C';
-            jqueryObject.sevenSeg({
-                digits: 4,
-                value: temperatureValue,//this.temperature,
-                colorOff: "#1a0000",
-                colorOn: "#F00"
-            });
+            this.temperature = Math.round(weather.main.temp * 10) / 10;
 
         } catch (ex) {
             console.error(JSON.stringify(ex, null, 2));

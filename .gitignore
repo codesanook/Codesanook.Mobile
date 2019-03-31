@@ -11,4 +11,4 @@ www/css/*
 
 # include sevenSeg.js
 !www/lib/sevenSeg.js
-
+!www/css/fonts

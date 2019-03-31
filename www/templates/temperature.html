@@ -13,26 +13,26 @@
             <div class="wrapper">
                 <div class="center2D">
                     <div class="thermometer">
-                        <img src="../img/thermometer.png" width="120" />
+                        <img src="img/thermometer-white.png" width="150" />
                         <div class="digits">
-                            <span>-33.3</span>
+                            <span>{{ temperatureCtrl.temperature }}</span>
                             <span class="unit"> ํc</span>
                         </div>
                     </div>
                     <div class="location">
                         <div>
-                            <label>Lat : </label>
+                            <i>Lat : </i>
                             <span>{{ temperatureCtrl.location.lat.toFixed(6) }}</span>
                         </div>
                         <div>
-                            <label>Lon : </label>
+                            <i>Lon : </i>
                             <span>{{ temperatureCtrl.location.lon.toFixed(6) }}</span>
                         </div>
                     </div>
-                    
+
                     <div class="btn-update">
                         <button type="button" ng-click="temperatureCtrl.updateCurrentLocation()">UPDATE</button>
-                        <div>Last update: 01-04-2019 10.22 pm</div>
+                        <div class="last-update">Last update: 01-04-2019 10.22 pm</div>
                     </div>
                 </div>
             </div>
