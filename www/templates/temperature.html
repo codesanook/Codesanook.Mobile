@@ -8,24 +8,34 @@
     <ion-nav-buttons side="right">
         <button class="button button-icon ion ion-information"></button>
     </ion-nav-buttons>
-    <ion-content>
-        <div class="item">
-            <button class="button button-default" ng-click="temperatureCtrl.updateCurrentLocation()">update</button>
-        </div>
-        <div class="item">
-            Update at:
-        </div>
-        <div class="item">
-            Current temperature :
-        </div>
-        <div class="item" style="background-color:#000">
-            <div id="temperature" class="big-sevenSeg"></div>
-        </div>
-        <div class="item">
-            Lat : {{ temperatureCtrl.location.lat }}
-        </div>
-        <div class="item">
-            Lon : {{ temperatureCtrl.location.lon }}
+    <ion-content class="temperature">
+        <div class="main">
+            <div class="wrapper">
+                <div class="center2D">
+                    <div class="thermometer">
+                        <img src="../img/thermometer.png" width="120" />
+                        <div class="digits">
+                            <span>-33.3</span>
+                            <span class="unit"> ํc</span>
+                        </div>
+                    </div>
+                    <div class="location">
+                        <div>
+                            <label>Lat : </label>
+                            <span>{{ temperatureCtrl.location.lat.toFixed(6) }}</span>
+                        </div>
+                        <div>
+                            <label>Lon : </label>
+                            <span>{{ temperatureCtrl.location.lon.toFixed(6) }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-update">
+                        <button type="button" ng-click="temperatureCtrl.updateCurrentLocation()">UPDATE</button>
+                        <div>Last update: 01-04-2019 10.22 pm</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </ion-content>
 </ion-view>

@@ -34,9 +34,10 @@ export default class TemperatureController {
             this.temperature = weather.main.temp;
             const jqueryObject: any = this.$document.find("#temperature");
 
+            const temperatureValue = Math.round(this.temperature * 10) / 10 + 'C';
             jqueryObject.sevenSeg({
                 digits: 4,
-                value: Math.round(this.temperature * 10) / 10,//this.temperature,
+                value: temperatureValue,//this.temperature,
                 colorOff: "#1a0000",
                 colorOn: "#F00"
             });

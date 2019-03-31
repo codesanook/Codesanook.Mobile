@@ -21,6 +21,18 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+@font-face {
+    font-family: 'ds-digi';
+    src: url('../css/fonts/ds-digi.eot');
+    src: url('../css/fonts/ds-digi.eot?#iefix') format('embedded-opentype'),
+         url('../css/fonts/ds-digi.woff2') format('woff2'),
+         url('../css/fonts/ds-digi.woff') format('woff'),
+         url('../css/fonts/ds-digi.ttf') format('truetype'),
+         url('../css/fonts/ds-digi.svg#ds-digi') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .offline-status {
     font-weight: 400;
     color: #721c24;
@@ -39,4 +51,91 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     padding:0.1em;
     height: 180px;
     width: 100%;
+}
+
+.center2D {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.temperature {
+    font-family: 'ds-digi';
+    background-color: #eee;
+
+    .main {
+        position: relative;
+        height: 92vh;
+
+        .wrapper {
+            position: absolute;
+            top: 15px;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            padding: 20px;
+            border: solid 2px #000;
+            border-radius: 10px;
+
+            .center2D {
+                width: calc(100% - 40px);
+
+                .thermometer {
+                    line-height: 1;
+                    text-align: center;
+                    border-bottom: solid 2px #000;
+        
+                    .digits {
+                        margin: 5px 0;
+                        font-size: 110px;
+                        font-weight: bold;
+        
+                        .unit {
+                            font-size: 50px;
+                        }
+                    }
+                }
+        
+                .location {
+                    margin: 20px auto;
+                    width: 150px;
+                    font-size: 24px;
+
+                    > div {
+                        label {
+                            display: inline-block;
+                            width: 40px;
+                            font-size: 20px;
+                        }
+                        span {
+                            display: inline-block;
+                            width: calc(100% - 46px);
+                            text-align: right;
+                        }
+                    }
+                }
+        
+                .btn-update {
+                    margin-top: 40px;
+                    text-align: center;
+        
+                    button {
+                        font-family: 'ds-digi';
+                        margin-bottom: 10px;
+                        padding: 5px 15px;
+                        border: solid 1px #ddd;
+                        border-radius: 4px;
+                        font-style: italic;
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+        
+    }
 }
