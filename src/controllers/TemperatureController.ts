@@ -1,17 +1,20 @@
-import * as moment from 'moment';
-import { IPromise } from 'angular';
+import WeatherService from '../services/WeatherService';
 
 class Location {
     lat: number;
     lon: number;
 }
-export default class TemperatureController {
 
+export default class TemperatureController {
+    //http://brandonlwhite.github.io/sevenSeg.js/
     location = new Location();
+    temperature: number;
 
     constructor(
         private $scope: ng.IScope,
-        private $cordovaGeolocation: ngCordova.IGeolocationService
+        private $cordovaGeolocation: ngCordova.IGeolocationService,
+        private weatherService: WeatherService,
+        private $document: ng.IDocumentService
     ) {
         //view loaded
         this.$scope.$on("$ionicView.enter", (event, data) => {
@@ -27,6 +30,17 @@ export default class TemperatureController {
             const position = await this.$cordovaGeolocation.getCurrentPosition(options)
             this.location.lat = position.coords.latitude;
             this.location.lon = position.coords.longitude;
+            const weather = await this.weatherService.getCurrentWeather(this.location.lat, this.location.lon);
+            this.temperature = weather.main.temp;
+            const jqueryObject: any = this.$document.find("#temperature");
+
+            jqueryObject.sevenSeg({
+                digits: 4,
+                value: Math.round(this.temperature * 10) / 10,//this.temperature,
+                colorOff: "#1a0000",
+                colorOn: "#F00"
+            });
+
         } catch (ex) {
             console.error(JSON.stringify(ex, null, 2));
         };

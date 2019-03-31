@@ -16,7 +16,7 @@ import NewsFeedController from './controllers/NewsFeedController';
 import CommunityController from './controllers/CommunityController';
 import SettingController from './controllers/SettingController';
 import TemperatureController from './controllers/TemperatureController';
-
+import WeatherService from './services/WeatherService';
 
 const enLocale = require('./locale/en.json');
 const thLocale = require('./locale/th.json');
@@ -32,19 +32,22 @@ const app = angular.module('codeSanook',
     ]);
 
 app.config((
-    $httpProvider,
+    $httpProvider: any,
     $stateProvider: ng.ui.IStateProvider,
     $urlRouterProvider: ng.ui.IUrlRouterProvider,
     $ionicConfigProvider: ionic.utility.IonicConfigProvider,
     $translateProvider: ng.translate.ITranslateProvider
 ) => {
     $httpProvider.interceptors.push(ServiceInterceptor.factory);
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
     registerRouters($stateProvider, $urlRouterProvider);
     $ionicConfigProvider.tabs.position('bottom'); // other values: top
 
     $translateProvider.translations('en', enLocale);
     $translateProvider.translations('th', thLocale);
     $translateProvider.preferredLanguage('th');
+
 });
 
 app.run((
@@ -99,3 +102,4 @@ app.controller('communityController', CommunityController);
 app.controller('settingController', SettingController);
 app.controller('temperatureController', TemperatureController);
 app.service('dateTimeService', DateTimeService);
+app.service('weatherService', WeatherService);

@@ -8,4 +8,6 @@ plugins/
 www/lib
 www/js/*
 www/css/*
+# include sevenSeg.js
+!www/lib/sevenSeg.js
 
